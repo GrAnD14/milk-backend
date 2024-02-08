@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Список заказов</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="{% url 'service_list' %}">Молочные услуги</a><br><br><hr>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'new_service' %}">Добавить услугу</a>
+            <a class="nav-item nav-link" href="{% url 'service_list' %}">Список услуг</a>
+            <a class="nav-item nav-link" href="{% url 'orders' %}">Список заказов</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>Список заказов</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Идентификатор заказа</th>
+                <th>Имя родителя</th>
+                <th>Услуга</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.parent_name }}</td>
+                <td>{{ order.service.name }}</td>
+                <td>{{ order.service.price }} руб.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
