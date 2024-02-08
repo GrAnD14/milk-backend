@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <title>Список услуг</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="{% url 'service_list' %}">Молочные услуги</a><br><br><hr>
+    <div class="navbar-nav">
+{#        <a class="nav-item nav-link" href="{% url 'new_service' %}">Добавить услугу</a>#}
+        <a class="nav-item nav-link" href="{% url 'service_list' %}">Список услуг</a>
+{#        <a class="nav-item nav-link" href="{% url 'orders' %}">Список заказов</a>#}
+    </div>
+    <br><hr>
+    <form action="findByName" method="get" enctype="multipart/form-data">
+        <label>Поиск по названию услуги</label>
+        <input name="name_to_search" type="text" value="{{ name_to_search }}">
+        <input type="submit" value="Поиск" >
+    </form>
+
+
+</nav>
+
+<div class="container mt-4">
+    <div class="mb-3">
+{#        <a href="{% url 'new_service' %}" class="btn btn-success">Добавить услугу</a>#}
+    </div>
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.name }}</h5>
+                    <p class="card-text">Цена: {{ service.price }} руб.</p>
+                    <a href="{% url 'service_detail' service_id=service.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
+{#                <form action="deactivateService" method="get" enctype="multipart/form-data">#}
+{#                    <input name="name_to_search" value="{{ name_to_search }}" hidden="hidden">#}
+{#                    <input name="service_id" value="{{ service.id }}" hidden="hidden">#}
+{#                    <input type="submit" value="Отключить услугу">#}
+{#                </form>#}
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
