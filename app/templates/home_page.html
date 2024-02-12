@@ -1,0 +1,52 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+        <div class="wrapper">
+            
+            <div class="search-container">
+
+                <form class="search-bar" action="/" method="GET">
+
+                    {% csrf_token %}
+
+                    <input type="text" placeholder="Введите название" name="query" value="{{ query }}">
+
+                    <button type="submit">Поиск</button>
+
+                </form>
+
+            </div>
+        
+            <div class="products-container">
+            
+                {% for product in products %}
+
+                   <div class="product-card">
+
+                       <img src="http://127.0.0.1:9000/images/products/{{ product.id }}.png"  alt=""/>
+
+                       <span>{{ product.name }}</span>
+
+                       <a href="product/{{ product.id }}">
+                            <button>Открыть</button>
+                       </a>
+
+                    </div>
+
+                {% endfor %} 
+            
+            </div>
+        
+        </div>
+
+</body>
+</html>
