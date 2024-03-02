@@ -1,0 +1,142 @@
+*, html {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: dodgerblue;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 50px;
+    padding: 25px;
+    background: #fff;
+}
+
+button {
+    outline: none;
+    border: none;
+    background: dodgerblue;
+    padding: 8px 16px;
+    color: #fff;
+    border-radius: 10px;
+    transition: 0.2s;
+    position: relative;
+}
+
+.busket:after {
+    content: "3";
+    background: #fff;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: -5px;
+    right: -5px;
+    border-radius: 10px;
+    color: #000;
+    border: 1px solid #000;
+}
+
+button:hover {
+    transform: scale(1.1)
+}
+
+.search-container input {
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.search-container button {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.products-container {
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+}
+
+.product-card {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.product-card span {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.product-card button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container img {
+    width: 500px;
+}
+
+.container h1 {
+    font-size: 32px;
+    color: #fff;
+}
+
+.container span {
+    font-size: 24px;
+    color: #fff;
+}
+
+.container button {
+    margin-top: 50px;
+    padding: 10px 25px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.order-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 25px;
+    gap: 25px;
+}
+
+
+.order-wrapper h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.order-wrapper button {
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+.order-wrapper .products-container {
+    padding: 0;
+}
