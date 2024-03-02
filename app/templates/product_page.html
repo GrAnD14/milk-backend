@@ -1,0 +1,52 @@
+{% extends 'base_page.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="content-wrapper">
+
+        <div class="product-details-wrapper">
+
+            <a class="return-link" href="/">Назад</a>
+
+            <div class="left">
+
+                <img src="http://127.0.0.1:9000/images/{{ product.image }}">
+
+            </div>
+
+            <div class="right">
+
+                <div class="product-info-container">
+
+                    <h2>{{ product.name }}</h2>
+
+                    <br>
+
+                    <span>Адрес: {{ product.description }}</span>
+
+                    <br />
+
+                    <span>Количество этажей: {{ product.floors }}</span>
+
+                    <br />
+
+                    <span>Год начала строительства: {{ product.year }}</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

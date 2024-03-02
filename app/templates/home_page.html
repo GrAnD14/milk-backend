@@ -1,0 +1,124 @@
+{% extends 'base_page.html' %}
+
+{% load static %}
+
+{% block title %}
+   Заказы
+{% endblock %}
+
+
+{% block content %}
+
+        <div class="content-wrapper">
+
+            <div class="cards-wrapper">
+
+                <div class="top">
+
+                    <h2>Продукты</h2>
+
+                    <div class="right-container">
+
+                        <form class="search-bar-wrapper" method="GET" action="/">
+
+                            {% csrf_token %}
+
+                            <input type="text" placeholder="Поиск" autocomplete="off" name="query" value="{{ query }}">
+
+                            <button type="submit">
+                                Поиск
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="bottom">
+
+                    {% for product in products %}
+
+                        <div class="card-wrapper">
+
+                            <div class="preview">
+                                <img src="http://127.0.0.1:9000/images/{{ product.image }}">
+                            </div>
+
+                            <div class="card-content">
+
+                                <div class="content-top">
+
+                                    <h3 class="title">{{ product.name }}</h3>
+
+                                </div>
+
+                                <div class="content-bottom">
+
+                                    <a href="products/{{product.id}}/add_to_order/" class="add-to-order-link">
+                                        <span>Добавить в заказ</span>
+                                    </a>
+
+                                     <a href="products/{{product.id}}/" class="details-link">
+                                        <span>Подробнее</span>
+                                    </a>
+
+                                    <a href="products/{{ product.id }}/delete/" class="delete-link">
+                                        <span>Удалить</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                    <div class="card-wrapper">
+
+                        <div class="preview">
+                            <img src="http://127.0.0.1:9000/images/products/busket.png">
+                        </div>
+
+                        <div class="card-content">
+
+                            <div class="content-top">
+
+                                <h3 class="title">{{ product.name }}</h3>
+
+                            </div>
+
+                            <div class="content-bottom">
+
+                                 {% if draft_order_id %}
+
+                                    <a href="/orders/{{ draft_order_id }}" class="details-link">
+                                        Новый заказ
+                                     <span class="products-count-label">{{ order_products_count }}</span>
+
+                                    </a>
+
+                                {% else  %}
+
+                                    <a class="disabled">
+                                        Новый заказ
+                                    </a>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}
